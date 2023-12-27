@@ -5,6 +5,5 @@ module.exports = {
 	merge: require("./merge"),
 	addParent: require("./parent"),
 	range: require("./range"),
-	zip: require("./zip")["zip"],
-	zipAll: require("./zip")["zipAll"],
+	...require("./zip"),
 };
