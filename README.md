@@ -34,8 +34,8 @@ This function takes either (_end_)(_start_ = 1, _step_ = 1) or (_start_, _end_)(
 
 ## zip
 
-This function zips each element of the passed arrays in _...arrays_ and returns the resultant array with size of the smallest array in _arrays_.
+This function zips each element of the passed _...arrays_ and returns the resultant array with size of the smallest array in _arrays_.
 
 ## zipAll
 
-This function zips each element of the passed arrays in _...arrays_ and returns the resultant array with size of the largest array in _arrays_ and replaces the missing elements for smaller arrays with **undefined**.
+This function zips each element of the passed _...arrays_ and returns the resultant array with size of the largest array in _arrays_ and replaces the missing elements for smaller arrays with **undefined**.

@@ -3,7 +3,7 @@
  * and returns the object.
  *
  * @param {any[]} array An array of elements
- * @param {function} classifier A function which determines the group of each element inside array.
+ * @param {function(any):string} classifier A function which determines the group of each element inside array.
  * @returns {object} An object containing the group keys and their value as an array an containing
  * all the elements which falls under that particular group.
  */

@@ -3,8 +3,8 @@
  * and checks in the returned function if the predicate returns true then
  * throw error or else return the value.
  *
- * @param {*} predicate A predicate to determine if the value is truthy or falsy.
- * @returns {function(any, string[])} A function called which to evaluate the value
+ * @param {function(any):boolean} predicate A predicate to determine if the value is truthy or falsy.
+ * @returns {function(any, string[]):any} A function called which to evaluate the value
  * and throw error if predicate returns true.
  */
 function assert(predicate) {
