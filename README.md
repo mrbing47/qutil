@@ -14,7 +14,7 @@ This function returns the element from a **Set()** from the position _index_.
 
 This function returns an **Object** which contains the classes (defined by passing each element in _classifier_) containing the elements of the array.
 
-> NOTE: This has been implemented as **Object.groupBy()** in most browsers but not supported by some runtimes.
+> **NOTE:** This has been implemented as **Object.groupBy()** in most browsers but not supported by some runtimes.
 
 ## merge
 
@@ -28,9 +28,9 @@ This function creates a **deep copy** and adds the reference to the parent objec
 
 This function returns an array containing the elements from including _start_ to excluding _end_ where each element is incremented by _steps_ (default = 1) which should not be equal to 0.
 
-This function takes either (_end_)(_start_ = 1, _step_ = 1) or (_start_, _end_)(_step_ = 1) or (_start_,_end_,_steps_).
+This function takes either `(end)(start = 1, steps = 1)` or `(start, end)(steps = 1)` or `(start, end, steps)`.
 
-> NOTE: This is a mimic to the Python **range()**, however returns an array instead of an iterator.
+> **NOTE:** This is a mimic to the Python **range()**, however returns an array instead of an iterator.
 
 ## zip
 
