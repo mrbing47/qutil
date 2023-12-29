@@ -6,10 +6,6 @@ This is a repository containing some of the useful util functions.
 
 This is a function which accepts _value_ and _...message_ and throws an **error** if _value_ is undefined or returns the _value_.
 
-## at
-
-This function returns the element from a **Set()** from the position _index_.
-
 ## groupBy
 
 This function returns an **Object** which contains the classes (defined by passing each element in _classifier_) containing the elements of the array.
