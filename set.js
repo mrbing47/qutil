@@ -1,3 +1,32 @@
+function intersection(a, b) {
+	a = new Set(a);
+	b = new Set(b);
+
+	const result = [];
+	a.forEach((element) => {
+		b.has(element) && result.push(element);
+	});
+
+	return result;
+}
+
+function difference(a, b) {
+	a = new Set(a);
+	b = new Set(b);
+
+	const result = [];
+
+	a.forEach((element) => {
+		b.has(element) || result.push(element);
+	});
+
+	return result;
+}
+
+function union(a, b) {
+	return [...new Set([...a, ...b])];
+}
+
 /**
  * This function returns an element of Set at the passed index.
  *
@@ -19,4 +48,4 @@ function at(set, index) {
 	return itr.next().value;
 }
 
-module.exports = at;
+module.exports = { intersection, difference, union, at };

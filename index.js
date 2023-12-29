@@ -1,9 +1,10 @@
 module.exports = {
 	assert: require("./assert"),
-	at: require("./at"),
+	compare: require("./compare"),
 	groupBy: require("./groupBy"),
 	merge: require("./merge"),
 	addParent: require("./parent"),
 	range: require("./range"),
+	set: require("./set"),
 	...require("./zip"),
 };
