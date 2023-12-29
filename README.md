@@ -32,6 +32,42 @@ This function takes either `(end)(start = 1, steps = 1)` or `(start, end)(steps 
 
 > **NOTE:** This is a mimic to the Python **range()**, however returns an array instead of an iterator.
 
+## set
+
+This contains all the relevant `Set` functions.
+
+#### at
+
+This function returns the element from a `Set()` from the position _index_.
+
+#### difference
+
+Accepts either an `Array` or `Set` and returns a `Set` containing all the element that are unique to the _first_ argument. If the either argument is not of type `Array` or `Set`, it will return **undefined**.
+
+#### intersection
+
+Accepts either an `Array` or `Set` and returns a `Set` containing all the element that are common in both arguments. If the either argument is not of type `Array` or `Set`, it will return **undefined**.
+
+#### isDisjointFrom
+
+Accepts either an `Array` or `Set` and returns a `boolean` where if _both_ arguments have no common elements then **true**, else **false**. If the either argument is not of type `Array` or `Set`, it will return **undefined**.
+
+#### isSubsetOf
+
+Accepts either an `Array` or `Set` and returns a `boolean` where if all the elements in _first_ argument are present in the _second_ argument then **true**, else **false**. If the either argument is not of type `Array` or `Set`, it will return **undefined**.
+
+#### isSupersetOf
+
+Accepts either an `Array` or `Set` and returns a `boolean` where if _first_ argument contains all the elements from the _second_ argument, then **true**, else **false**. If the either argument is not of type `Array` or `Set`, it will return **undefined**.
+
+#### symmetricDifference
+
+Accepts either an `Array` or `Set` and returns a `Set` containing all the element that are unique to _both_ arguments and not the common ones. If the either argument is not of type `Array` or `Set`, it will return **undefined**.
+
+#### union
+
+Accepts either an `Array` or `Set` and returns a `Set` containing all the element from _both_ arguments after removing the duplicates. If the either argument is not of type `Array` or `Set`, it will return **undefined**.
+
 ## zip
 
 This function zips each element of the passed _...arrays_ and returns the resultant array with size of the smallest array in _arrays_.

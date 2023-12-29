@@ -1,30 +1,20 @@
-function intersection(a, b) {
-	a = new Set(a);
-	b = new Set(b);
+/**
+ * This function validates if a and b are of type Array or Set,
+ * if true, return a and b as Set else return undefined.
+ *
+ * @param {any} a An instance of Array or Set.
+ * @param {any} b An instance of Array or Set.
+ * @returns {Array|undefined} Undefined if either a or b is not of type Array or Set,
+ * else an Array containg a and b of type Set.
+ */
 
-	const result = [];
-	a.forEach((element) => {
-		b.has(element) && result.push(element);
-	});
+function validateSetArgs(a, b) {
+	if (Array.isArray(a)) a = new Set(a);
+	if (Array.isArray(b)) b = new Set(b);
 
-	return result;
-}
+	if (!(a instanceof Set && b instanceof Set)) return undefined;
 
-function difference(a, b) {
-	a = new Set(a);
-	b = new Set(b);
-
-	const result = [];
-
-	a.forEach((element) => {
-		b.has(element) || result.push(element);
-	});
-
-	return result;
-}
-
-function union(a, b) {
-	return [...new Set([...a, ...b])];
+	return [a, b];
 }
 
 /**
@@ -48,4 +38,143 @@ function at(set, index) {
 	return itr.next().value;
 }
 
-module.exports = { intersection, difference, union, at };
+/**
+ * This function returns a `Set` containing
+ * all the element that are unique to the first argument.
+ *
+ * @param {Array|Set} a An instance of Array or Set.
+ * @param {Array|Set} b An instance of Array or Set.
+ * @returns {Set|undefined} containg unique elements from a.
+ */
+
+function difference(a, b) {
+	const argCheck = validateSetArgs(a, b);
+
+	if (argCheck === undefined) return;
+	else [a, b] = argCheck;
+
+	const result = new Set();
+
+	a.forEach((element) => {
+		b.has(element) || result.add(element);
+	});
+
+	return result;
+}
+
+/**
+ * This function returns a `Set` containing
+ * all the element that are common in both arguments
+ *
+ * @param {Array|Set} a An instance of Array or Set.
+ * @param {Array|Set} b An instance of Array or Set.
+ * @returns {Set|undefined} containg common elements.
+ */
+
+function intersection(a, b) {
+	const argCheck = validateSetArgs(a, b);
+
+	if (argCheck === undefined) return;
+	else [a, b] = argCheck;
+
+	const result = new Set();
+	a.forEach((element) => {
+		b.has(element) && result.add(element);
+	});
+
+	return result;
+}
+
+/**
+ * This function returns a boolean where
+ * if both arguments have no common elements then true, else false
+ *
+ * @param {Array|Set} a An instance of Array or Set.
+ * @param {Array|Set} b An instance of Array or Set.
+ * @returns {boolean|undefined}
+ */
+
+function isDisjointFrom(a, b) {
+	const argCheck = validateSetArgs(a, b);
+
+	if (argCheck === undefined) return;
+	else [a, b] = argCheck;
+
+	return intersection(a, b).size === 0;
+}
+
+/**
+ * This function returns a boolean where
+ * if all the elements in first argument are present in the
+ * second argument then true, else false.
+ *
+ * @param {Array|Set} a An instance of Array or Set.
+ * @param {Array|Set} b An instance of Array or Set.
+ * @returns {boolean|undefined}
+ */
+
+function isSubsetOf(a, b) {
+	return isSupersetOf(b, a);
+}
+
+/**
+ * This function returns a boolean where
+ * if first argument contains all the elements from the
+ * second argument, then true, else false.
+ *
+ *
+ * @param {Array|Set} a An instance of Array or Set.
+ * @param {Array|Set} b An instance of Array or Set.
+ * @returns {boolean|undefined}
+ */
+
+function isSupersetOf(a, b) {
+	const argCheck = validateSetArgs(a, b);
+
+	if (argCheck === undefined) return;
+	else [a, b] = argCheck;
+
+	return intersection(a, b).size === b.size;
+}
+
+/**
+ * This function returns a Set containing all the element
+ * that are unique to both arguments and not the common ones
+ *
+ * @param {Array|Set} a An instance of Array or Set.
+ * @param {Array|Set} b An instance of Array or Set.
+ * @returns {boolean|undefined}
+ */
+
+function symmetricDifference(a, b) {
+	return union(difference(a, b), difference(b, a));
+}
+
+/**
+ * This function returns a Set containing all the
+ * element from both arguments after removing the duplicates
+ *
+ * @param {Array|Set} a An instance of Array or Set.
+ * @param {Array|Set} b An instance of Array or Set.
+ * @returns {boolean|undefined}
+ */
+
+function union(a, b) {
+	const argCheck = validateSetArgs(a, b);
+
+	if (argCheck === undefined) return;
+	else [a, b] = argCheck;
+
+	return new Set([...a, ...b]);
+}
+
+module.exports = {
+	intersection,
+	difference,
+	union,
+	at,
+	symmetricDifference,
+	isDisjointFrom,
+	isSupersetOf,
+	isSubsetOf,
+};
