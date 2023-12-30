@@ -3,3 +3,4 @@ README.md
 .gitignore
 src/**
 **/.DS_Store
+!build/**
