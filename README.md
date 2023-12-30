@@ -2,6 +2,18 @@
 
 This is a repository containing some of the useful util functions.
 
+## Install
+
+To use this library in your code,
+
+```bash
+npm i qutyl
+```
+
+However, you can install the package from any other package-manager (like yarn, bun, etc.) which forks from NPM Registry.
+
+---
+
 ## assert
 
 This is a function which accepts _value_ and _...message_ and throws an **error** if _value_ is undefined or returns the _value_.

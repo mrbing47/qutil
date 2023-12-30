@@ -1,5 +1,5 @@
 {
-	"name": "qutil",
+	"name": "qutyl",
 	"version": "1.0.0",
 	"description": "A basic library for some utility functions",
 	"main": "index.js",
@@ -19,12 +19,12 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/mrbing47/qutil.git"
+		"url": "git+https://github.com/mrbing47/qutyl.git"
 	},
 	"author": "Sarthik Garg",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/mrbing47/qutil/issues"
+		"url": "https://github.com/mrbing47/qutyl/issues"
 	},
-	"homepage": "https://github.com/mrbing47/qutil#readme"
+	"homepage": "https://github.com/mrbing47/qutyl#readme"
 }
