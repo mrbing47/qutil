@@ -1,0 +1,30 @@
+{
+	"name": "qutil",
+	"version": "1.0.0",
+	"description": "A basic library for some utility functions",
+	"main": "index.js",
+	"keywords": [
+		"utility",
+		"util",
+		"functionality",
+		"accessibility",
+		"set",
+		"parent",
+		"range",
+		"assert",
+		"compare",
+		"groupBy",
+		"merge",
+		"zip"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mrbing47/qutil.git"
+	},
+	"author": "Sarthik Garg",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/mrbing47/qutil/issues"
+	},
+	"homepage": "https://github.com/mrbing47/qutil#readme"
+}
