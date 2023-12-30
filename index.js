@@ -1,10 +1,10 @@
 module.exports = {
-	assert: require("./assert"),
-	compare: require("./compare"),
-	groupBy: require("./groupBy"),
-	merge: require("./merge"),
-	addParent: require("./parent"),
-	range: require("./range"),
-	set: require("./set"),
-	...require("./zip"),
+	assert: require("./src/assert"),
+	compare: require("./src/compare"),
+	groupBy: require("./src/groupBy"),
+	merge: require("./src/merge"),
+	addParent: require("./src/parent"),
+	range: require("./src/range"),
+	set: require("./src/set"),
+	...require("./src/zip"),
 };
