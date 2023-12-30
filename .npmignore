@@ -2,3 +2,4 @@ index.js
 README.md
 .gitignore
 src/**
+**/.DS_Store
