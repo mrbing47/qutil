@@ -1,6 +1,6 @@
 {
 	"name": "qutyl",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "A basic library for some utility functions",
 	"main": "index.js",
 	"keywords": [
