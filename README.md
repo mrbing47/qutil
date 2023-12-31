@@ -149,40 +149,239 @@ This contains all the relevant `Set` functions.
 
 #### at
 
-This function returns the element from a `Set()` from the position _index_.
+This function returns the element from a `Set()` from the integer _index_, i.e., it supports both forward(positive) and backward(negative) indexing.
+
+###### Usage
+
+```Javascript
+
+const { set: { at } } = require("qutyl")
+
+const foo = new Set([0,1,2,3,4])
+
+at(foo, -1)
+// 4
+
+at(foo, -2)
+// 3
+
+at(foo, 2)
+// 2
+
+at(foo, 10)
+// undefined
+```
 
 #### difference
 
 Accepts either an `Array` or `Set` and returns a `Set` containing all the element that are unique to the _first_ argument. If the either argument is not of type `Array` or `Set`, it will return **undefined**.
 
+###### Usage
+
+```Javascript
+
+const { set: { difference } } = require("qutyl")
+
+const foo = new Set([0,1,2,3,4])
+const bar = new Set([0,1,2,5,6,7,8,9])
+
+difference(foo, bar)
+// Set([3,4])
+
+difference(bar, foo)
+// Set([5,6,7,8,9])
+```
+
 #### intersection
 
 Accepts either an `Array` or `Set` and returns a `Set` containing all the element that are common in both arguments. If the either argument is not of type `Array` or `Set`, it will return **undefined**.
+
+###### Usage
+
+```Javascript
+
+const { set: { intersection } } = require("qutyl")
+
+const foo = new Set([0,1,2,3,4])
+const bar = new Set([0,1,2,5,6,7,8,9])
+
+intersection(foo, bar)
+// Set([0,1,2])
+```
 
 #### isDisjointFrom
 
 Accepts either an `Array` or `Set` and returns a `boolean` where if _both_ arguments have no common elements then **true**, else **false**. If the either argument is not of type `Array` or `Set`, it will return **undefined**.
 
+###### Usage
+
+```Javascript
+
+const { set: { isDisjointFrom } } = require("qutyl")
+
+const foo = new Set([0,1,2,3,4])
+const bar = new Set([0,1,2,5,6,7,8,9])
+const blah = new Set([5,6,7,8,9])
+
+isDisjointFrom(foo, bar)
+// false
+
+isDisjointFrom(foo, blah)
+// true
+```
+
 #### isSubsetOf
 
 Accepts either an `Array` or `Set` and returns a `boolean` where if all the elements in _first_ argument are present in the _second_ argument then **true**, else **false**. If the either argument is not of type `Array` or `Set`, it will return **undefined**.
+
+###### Usage
+
+```Javascript
+
+const { set: { isSubsetOf } } = require("qutyl")
+
+const foo = new Set([0,1,2,3,4])
+const bar = new Set([0,1,2,5,6,7,8,9])
+const blah = new Set([5,6,7,8,9])
+
+isSubsetOf(foo, bar)
+// false
+
+isSubsetOf(bar, foo)
+// false
+
+isSubsetOf(foo, blah)
+// false
+
+isSubsetOf(blah, bar)
+// true
+
+isSubsetOf(bar, blah)
+// false
+```
 
 #### isSupersetOf
 
 Accepts either an `Array` or `Set` and returns a `boolean` where if _first_ argument contains all the elements from the _second_ argument, then **true**, else **false**. If the either argument is not of type `Array` or `Set`, it will return **undefined**.
 
+###### Usage
+
+```Javascript
+
+const { set: { isSupersetOf } } = require("qutyl")
+
+const foo = new Set([0,1,2,3,4])
+const bar = new Set([0,1,2,5,6,7,8,9])
+const blah = new Set([5,6,7,8,9])
+
+isSupersetOf(foo, bar)
+// false
+
+isSupersetOf(bar, foo)
+// false
+
+isSupersetOf(foo, blah)
+// false
+
+isSupersetOf(blah, bar)
+// false
+
+isSupersetOf(bar, blah)
+// true
+```
+
 #### symmetricDifference
 
 Accepts either an `Array` or `Set` and returns a `Set` containing all the element that are unique to _both_ arguments and not the common ones. If the either argument is not of type `Array` or `Set`, it will return **undefined**.
+
+###### Usage
+
+```Javascript
+
+const { set: { symmetricDifference } } = require("qutyl")
+
+const foo = new Set([0,1,2,3,4])
+const bar = new Set([0,1,2,5,6,7,8,9])
+const blah = new Set([5,6,7,8,9])
+
+symmetricDifference(foo, bar)
+// Set([3,4,5,6,7,8,9])
+
+symmetricDifference(foo, blah)
+// Set([0,1,2,3,4,5,6,7,8,9])
+
+symmetricDifference(bar, blah)
+// Set([0,1,2])
+```
 
 #### union
 
 Accepts either an `Array` or `Set` and returns a `Set` containing all the element from _both_ arguments after removing the duplicates. If the either argument is not of type `Array` or `Set`, it will return **undefined**.
 
+###### Usage
+
+```Javascript
+
+const { set: { union } } = require("qutyl")
+
+const foo = new Set([0,1,2,3,4])
+const bar = new Set([0,1,2,5,6,7,8,9])
+
+union(foo, bar)
+// Set([0,1,2,3,4,5,6,7,8,9])
+```
+
 ## zip
 
 This function zips each element of the passed _...arrays_ and returns the resultant array with size of the smallest array in _arrays_.
 
+#### Usage
+
+```Javascript
+
+const { zip } = require("qutyl")
+
+const foo = [0,1,2,3,4]
+const bar = [0,1,2,5,6,7,8,9]
+const blah = [5,6,7,8,9]
+
+zip(foo, bar, blah)
+/*
+[
+  [ 0, 0, 5 ],
+  [ 1, 1, 6 ],
+  [ 2, 2, 7 ],
+  [ 3, 5, 8 ],
+  [ 4, 6, 9 ]
+]
+*/
+```
+
 ## zipAll
 
 This function zips each element of the passed _...arrays_ and returns the resultant array with size of the largest array in _arrays_ and replaces the missing elements for smaller arrays with **undefined**.
+
+#### Usage
+
+```Javascript
+
+const { zipAll } = require("qutyl")
+
+const foo = [0,1,2,3,4]
+const bar = [0,1,2,5,6,7,8,9]
+const blah = [5,6,7,8,9]
+
+zipAll(foo, bar, blah)
+/*
+[
+  [ 0, 0, 5 ],
+  [ 1, 1, 6 ],
+  [ 2, 2, 7 ],
+  [ 3, 5, 8 ],
+  [ 4, 6, 9 ],
+  [ undefined, 7, undefined],
+  [ undefined, 8, undefined ],
+  [ undefined, 9, undefined ]
+]
+*/
+```
