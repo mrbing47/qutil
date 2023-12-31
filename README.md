@@ -102,19 +102,47 @@ compare.SKIP.SORT
 const { compare } = require("qutyl");
 
 const foo = {
-	a: 1
+	a: 1,
+	wow: {
+		x: {
+			y: {
+				z: 20
+			}
+		}
+	}
+};
+
+const temp = {
+	a: 1,
+	wow: {
+		x: {
+			y: {
+				z: 20
+			}
+		}
+	}
 };
 
 const bar = {
-	b: 2
+	b: 2,
+	e: 10
 };
 
 const blah = {
 	c: 2,
-	d: 3
+	d: 3,
+	f: 20
 };
 
+
+
 compare(foo, bar);
+// false
+
+compare(foo, temp);
+// true
+
+compare(blah, bar);
 // false
 
 compare(foo, bar, compare.TYPE);
@@ -125,6 +153,8 @@ compare(foo, bar, compare.LENGTH);
 
 compare(foo, blah, compare.LENGTH);
 // false
+
+
 ```
 
 ```Javascript
