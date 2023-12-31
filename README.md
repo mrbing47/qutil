@@ -14,6 +14,31 @@ However, you can install the package from any other package-manager (like yarn, 
 
 ---
 
+## addParent
+
+This function creates a **deep copy** and adds the reference to the parent object in `this` for function to access the object tree.
+
+#### Usage
+
+```Javascript
+
+const { addParent } = require("qutyl")
+
+const obj = {
+	a: 10,
+	foo: {
+		bar(){
+			console.log(this.parent.a);
+		}
+	}
+}
+
+const newObj = addParent(obj);
+
+console.log(newObj.foo.bar())
+// 10
+```
+
 ## assert
 
 This is a function accepts a predicate function and returns a function accepting _value_ and _...message_ and throws an **error** if predicate is returns true with _value_ or returns the _value_.
@@ -21,6 +46,8 @@ This is a function accepts a predicate function and returns a function accepting
 #### Usage
 
 ```Javascript
+const { assert } = require("qutyl")
+
 const assertFalsey = assert((value) => !!value);
 
 try{
@@ -57,6 +84,8 @@ This function returns an **Object** which contains the classes (defined by passi
 #### Usage
 
 ```Javascript
+const { groupBy } = require("qutyl")
+
 const array = [1,2,3,4,5,6,7,8,9,0]
 
 const classifier = (element) => element % 2 ? "odd" : "even";
@@ -72,6 +101,8 @@ This function merges the _...args_ arrays passed to it based on the value return
 #### Usage
 
 ```Javascript
+const { merge } = require("qutyl")
+
 const foo = [2,3,4,7,9]
 const bar = [0,1,8]
 const blah = [5,6]
@@ -80,31 +111,6 @@ const evaluator = (element) => element;
 
 console.log(merge(evaluator, foo, bar, blah))
 // [0,1,2,3,4,5,6,7,8,9]
-```
-
-## parent
-
-This function creates a **deep copy** and adds the reference to the parent object in `this` for function to access the object tree.
-
-#### Usage
-
-```Javascript
-
-const { addParent } = require("qutyl")
-
-const obj = {
-	a: 10,
-	foo: {
-		bar(){
-			console.log(this.parent.a);
-		}
-	}
-}
-
-const newObj = addParent(obj);
-
-console.log(newObj.foo.bar())
-// 10
 ```
 
 ## range
@@ -118,6 +124,8 @@ This function takes either `(end)(start = 1, steps = 1)` or `(start, end)(steps 
 #### Usage
 
 ```Javascript
+const { range } = require("qutyl")
+
 range(10)
 // [0,1,2,3,4,5,6,7,8,9]
 

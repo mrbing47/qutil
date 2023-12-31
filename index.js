@@ -3,7 +3,7 @@ module.exports = {
 	compare: require("./src/compare"),
 	groupBy: require("./src/groupBy"),
 	merge: require("./src/merge"),
-	addParent: require("./src/parent"),
+	addParent: require("./src/addParent"),
 	range: require("./src/range"),
 	set: require("./src/set"),
 	...require("./src/zip"),
