@@ -1,3 +1,5 @@
+const { symmetricDifference } = require("./set");
+
 /**
  * This function checks whether the argument is of type Object or not.
  *
@@ -66,24 +68,6 @@ function isSameType(a, b) {
 }
 
 /**
- * This function returns an array containing all the element that are common in both arguments.
- *
- * @param {*} a An Array or Set.
- * @param {*} b An Array or Set.
- * @returns {Array} An array containing all the common elements.
- */
-function intersection(a, b) {
-	b = new Set(b);
-
-	const result = [];
-	a.forEach((element) => {
-		b.has(element) && result.push(element);
-	});
-
-	return result;
-}
-
-/**
  * This function performs a deep SameValueZero check on all the values of an object and array
  * or on a simple primitive variable. If the any value or key for an object or any element of an array
  * is contained in the other, the function will return false.
@@ -93,21 +77,20 @@ function intersection(a, b) {
  * @returns {boolean} If both arguments are deeply equal or not.
  */
 
-function compare(obj1, obj2) {
+function compare(obj1, obj2, checks) {
 	if (!isSameType(obj1, obj2)) return false;
+	if (checks === 1) return true;
 
 	if (isObject(obj1)) {
-		const obj1Keys = Object.keys(obj1);
-		const obj2Keys = Object.keys(obj2);
+		const [obj1Keys, obj2Keys] = [
+			Object.keys(obj1),
+			Object.keys(obj2),
+		];
 
 		if (obj1Keys.length !== obj2Keys.length) return false;
+		if (checks === 2) return true;
 
-		const abIntersection = intersection(obj2Keys, obj1Keys);
-
-		if (
-			abIntersection.length !== obj1Keys.length ||
-			abIntersection.length !== obj2Keys.length
-		)
+		if (symmetricDifference(obj2Keys, obj1Keys).size !== 0)
 			return false;
 
 		return obj1Keys.every((key) => compare(obj1[key], obj2[key]));
@@ -115,15 +98,29 @@ function compare(obj1, obj2) {
 
 	if (Array.isArray(obj1)) {
 		if (obj1.length !== obj2.length) return false;
+		if (checks === 2) return true;
 
-		aSorted = obj1.toSorted();
-		bSorted = obj2.toSorted();
+		if (checks !== 3) {
+			obj1 = obj1.toSorted();
+			obj2 = obj2.toSorted();
+		}
 
 		return aSorted.every((element, ix) =>
 			compare(element, bSorted[ix])
 		);
 	}
+
+	if (typeof obj1 === "string") {
+		if (obj1.length !== obj2.length) return false;
+		if (checks === 2) return true;
+	}
+
 	return sameValueZero(obj1, obj2);
 }
+
+compare.TYPE = 1;
+compare.LENGTH = 2;
+compare.SKIP = Object.create(null);
+compare.SKIP.SORT = 3;
 
 module.exports = compare;

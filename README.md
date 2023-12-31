@@ -75,6 +75,115 @@ try{
 }
 ```
 
+## compare
+
+This function performs a deep **SameValueZero** check on all the values of an object and array or on a simple primitive variable. For object type, it checks for keys and values, for arrays, it first sorts the values and then compares the values, for other, **SameValueZero** is used.
+
+#### Flags
+
+In order to tune the the comparision according to your needs, use the following flags:
+
+```Javascript
+const { compare } = require("qutyl")
+
+compare.TYPE
+// Only checks for the type of two values.
+
+compare.LENGTH
+// For objects, arrays and string, first checks the type and then it checks for length, skipping the elements comparision.
+
+compare.SKIP.SORT
+// For arrays, the function first sorts them in order to compare them, but if you have know that passed arguments are sorted, use this flag to skip the sorting process.
+```
+
+#### Usage
+
+```Javascript
+const { compare } = require("qutyl");
+
+const foo = {
+	a: 1
+};
+
+const bar = {
+	b: 2
+};
+
+const blah = {
+	c: 2,
+	d: 3
+};
+
+compare(foo, bar);
+// false
+
+compare(foo, bar, compare.TYPE);
+// true
+
+compare(foo, bar, compare.LENGTH);
+// true
+
+compare(foo, blah, compare.LENGTH);
+// false
+```
+
+```Javascript
+const { compare } = require("qutyl");
+
+const foo = [1,2,3]
+const bar = [1,2,3,4]
+const blah = [2,3,1]
+const wow = {
+	a: 2
+}
+
+compare(foo, bar);
+// false
+
+compare(foo, bar, compare.SKIP.SORT); // does not influence the result but saves extra processing time.
+// false
+
+compare(foo, bar, compare.TYPE);
+// true
+
+compare(foo, bar, compare.LENGTH);
+// false
+
+compare(foo, blah);
+// true
+
+compare(foo, wow, compare.TYPE);
+// false
+```
+
+```Javascript
+const { compare } = require("qutyl");
+
+compare(10, "10");
+// false
+
+compare(10, 10);
+// true
+
+compare(10, 1);
+// false
+
+compare(10, 1, compare.TYPE);
+// true
+
+compare("hello", "world")
+// false
+
+compare("hello", "world", compare.LENGTH)
+// true
+
+compare(NaN, NaN)
+// true
+
+compare(+0, -0)
+// true
+```
+
 ## groupBy
 
 This function returns an **Object** which contains the classes (defined by passing each element in _classifier_) containing the elements of the array.

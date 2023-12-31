@@ -15,7 +15,18 @@
 		"compare",
 		"groupBy",
 		"merge",
-		"zip"
+		"zip",
+		"zipAll",
+		"compare",
+		"deep compare",
+		"at",
+		"intersection",
+		"union",
+		"difference",
+		"isDisjointFrom",
+		"isSubsetOf",
+		"isSupersetOf",
+		"symmetricDifference"
 	],
 	"repository": {
 		"type": "git",
