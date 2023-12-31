@@ -22,7 +22,7 @@ This function creates a **deep copy** and adds the reference to the parent objec
 
 ```Javascript
 
-const { addParent } = require("qutyl")
+const { addParent } = require("qutyl");
 
 const obj = {
 	a: 10,
@@ -35,7 +35,7 @@ const obj = {
 
 const newObj = addParent(obj);
 
-console.log(newObj.foo.bar())
+newObj.foo.bar();
 // 10
 ```
 
@@ -46,32 +46,32 @@ This is a function accepts a predicate function and returns a function accepting
 #### Usage
 
 ```Javascript
-const { assert } = require("qutyl")
+const { assert } = require("qutyl");
 
 const assertFalsey = assert((value) => !!value);
 
 try{
-	assertFalsey("", "Error: A falsey value has been passed.")
+	assertFalsey("", "Error: A falsey value has been passed.");
 }catch(error){
-	console.log(error.message)
+	console.log(error.message);
 	// Error: A falsey value has been passed.
 }
 
 const assertUndefined = assert((value) => value == undefined);
 
 try{
-	assertUndefined(undefined, "Error: An undefined value has been passed.")
+	assertUndefined(undefined, "Error: An undefined value has been passed.");
 }catch(error){
-	console.log(error.message)
+	console.log(error.message);
 	// Error: An undefined value has been passed.
 }
 
 try{
-	let value = assertUndefined(10, "Error: Can not perform binary operation on undefined.")
-	console.log(value)
+	let value = assertUndefined(10, "Error: Can not perform binary operation on undefined.");
+	console.log(value);
 	// 10
 }catch(error){
-	console.log(error.message)
+	console.log(error.message);
 }
 ```
 
@@ -84,13 +84,13 @@ This function returns an **Object** which contains the classes (defined by passi
 #### Usage
 
 ```Javascript
-const { groupBy } = require("qutyl")
+const { groupBy } = require("qutyl");
 
-const array = [1,2,3,4,5,6,7,8,9,0]
+const array = [1,2,3,4,5,6,7,8,9,0];
 
 const classifier = (element) => element % 2 ? "odd" : "even";
 
-console.log(groupBy(array, classifier))
+groupBy(array, classifier);
 // {odd: [1,3,5,7,9], even: [2,4,6,8,0]}
 ```
 
@@ -101,15 +101,15 @@ This function merges the _...args_ arrays passed to it based on the value return
 #### Usage
 
 ```Javascript
-const { merge } = require("qutyl")
+const { merge } = require("qutyl");
 
-const foo = [2,3,4,7,9]
-const bar = [0,1,8]
-const blah = [5,6]
+const foo = [2,3,4,7,9];
+const bar = [0,1,8];
+const blah = [5,6];
 
 const evaluator = (element) => element;
 
-console.log(merge(evaluator, foo, bar, blah))
+merge(evaluator, foo, bar, blah)
 // [0,1,2,3,4,5,6,7,8,9]
 ```
 
@@ -124,30 +124,30 @@ This function takes either `(end)(start = 1, steps = 1)` or `(start, end)(steps 
 #### Usage
 
 ```Javascript
-const { range } = require("qutyl")
+const { range } = require("qutyl");
 
-range(10)
+range(10);
 // [0,1,2,3,4,5,6,7,8,9]
 
-range(-10)
+range(-10);
 // []
 
-range(-10, 0)
+range(-10, 0);
 // [ -10, -9, -8, -7, -6, -5, -4, -3, -2, -1 ]
 
-range(0, -10)
+range(0, -10);
 // []
 
-range(0, -10, -1)
+range(0, -10, -1);
 // [ 0, -1, -2, -3, -4, -5, -6, -7, -8, -9 ]
 
-range(5, 10)
+range(5, 10);
 // [5, 6, 7, 8, 9]
 
-range(5, 20, 4)
+range(5, 20, 4);
 // [ 5, 9, 13, 17 ]
 
-range(0, 10, 0)
+range(0, 10, 0);
 // []
 ```
 
@@ -163,20 +163,20 @@ This function returns the element from a `Set()` from the integer _index_, i.e.,
 
 ```Javascript
 
-const { set: { at } } = require("qutyl")
+const { set: { at } } = require("qutyl");
 
-const foo = new Set([0,1,2,3,4])
+const foo = new Set([0,1,2,3,4]);
 
-at(foo, -1)
+at(foo, -1);
 // 4
 
-at(foo, -2)
+at(foo, -2);
 // 3
 
-at(foo, 2)
+at(foo, 2);
 // 2
 
-at(foo, 10)
+at(foo, 10);
 // undefined
 ```
 
@@ -188,15 +188,15 @@ Accepts either an `Array` or `Set` and returns a `Set` containing all the elemen
 
 ```Javascript
 
-const { set: { difference } } = require("qutyl")
+const { set: { difference } } = require("qutyl");
 
-const foo = new Set([0,1,2,3,4])
-const bar = new Set([0,1,2,5,6,7,8,9])
+const foo = new Set([0,1,2,3,4]);
+const bar = new Set([0,1,2,5,6,7,8,9]);
 
-difference(foo, bar)
+difference(foo, bar);
 // Set([3,4])
 
-difference(bar, foo)
+difference(bar, foo);
 // Set([5,6,7,8,9])
 ```
 
@@ -208,12 +208,12 @@ Accepts either an `Array` or `Set` and returns a `Set` containing all the elemen
 
 ```Javascript
 
-const { set: { intersection } } = require("qutyl")
+const { set: { intersection } } = require("qutyl");
 
-const foo = new Set([0,1,2,3,4])
-const bar = new Set([0,1,2,5,6,7,8,9])
+const foo = new Set([0,1,2,3,4]);
+const bar = new Set([0,1,2,5,6,7,8,9]);
 
-intersection(foo, bar)
+intersection(foo, bar);
 // Set([0,1,2])
 ```
 
@@ -224,17 +224,16 @@ Accepts either an `Array` or `Set` and returns a `boolean` where if _both_ argum
 ###### Usage
 
 ```Javascript
+const { set: { isDisjointFrom } } = require("qutyl");
 
-const { set: { isDisjointFrom } } = require("qutyl")
+const foo = new Set([0,1,2,3,4]);
+const bar = new Set([0,1,2,5,6,7,8,9]);
+const blah = new Set([5,6,7,8,9]);
 
-const foo = new Set([0,1,2,3,4])
-const bar = new Set([0,1,2,5,6,7,8,9])
-const blah = new Set([5,6,7,8,9])
-
-isDisjointFrom(foo, bar)
+isDisjointFrom(foo, bar);
 // false
 
-isDisjointFrom(foo, blah)
+isDisjointFrom(foo, blah);
 // true
 ```
 
@@ -246,25 +245,25 @@ Accepts either an `Array` or `Set` and returns a `boolean` where if all the elem
 
 ```Javascript
 
-const { set: { isSubsetOf } } = require("qutyl")
+const { set: { isSubsetOf } } = require("qutyl");
 
-const foo = new Set([0,1,2,3,4])
-const bar = new Set([0,1,2,5,6,7,8,9])
-const blah = new Set([5,6,7,8,9])
+const foo = new Set([0,1,2,3,4]);
+const bar = new Set([0,1,2,5,6,7,8,9]);
+const blah = new Set([5,6,7,8,9]);
 
-isSubsetOf(foo, bar)
+isSubsetOf(foo, bar);
 // false
 
-isSubsetOf(bar, foo)
+isSubsetOf(bar, foo);
 // false
 
-isSubsetOf(foo, blah)
+isSubsetOf(foo, blah);
 // false
 
-isSubsetOf(blah, bar)
+isSubsetOf(blah, bar);
 // true
 
-isSubsetOf(bar, blah)
+isSubsetOf(bar, blah);
 // false
 ```
 
@@ -276,25 +275,25 @@ Accepts either an `Array` or `Set` and returns a `boolean` where if _first_ argu
 
 ```Javascript
 
-const { set: { isSupersetOf } } = require("qutyl")
+const { set: { isSupersetOf } } = require("qutyl");
 
-const foo = new Set([0,1,2,3,4])
-const bar = new Set([0,1,2,5,6,7,8,9])
-const blah = new Set([5,6,7,8,9])
+const foo = new Set([0,1,2,3,4]);
+const bar = new Set([0,1,2,5,6,7,8,9]);
+const blah = new Set([5,6,7,8,9]);
 
-isSupersetOf(foo, bar)
+isSupersetOf(foo, bar);
 // false
 
-isSupersetOf(bar, foo)
+isSupersetOf(bar, foo);
 // false
 
-isSupersetOf(foo, blah)
+isSupersetOf(foo, blah);
 // false
 
-isSupersetOf(blah, bar)
+isSupersetOf(blah, bar);
 // false
 
-isSupersetOf(bar, blah)
+isSupersetOf(bar, blah);
 // true
 ```
 
@@ -305,20 +304,19 @@ Accepts either an `Array` or `Set` and returns a `Set` containing all the elemen
 ###### Usage
 
 ```Javascript
+const { set: { symmetricDifference } } = require("qutyl");
 
-const { set: { symmetricDifference } } = require("qutyl")
+const foo = new Set([0,1,2,3,4]);
+const bar = new Set([0,1,2,5,6,7,8,9]);
+const blah = new Set([5,6,7,8,9]);
 
-const foo = new Set([0,1,2,3,4])
-const bar = new Set([0,1,2,5,6,7,8,9])
-const blah = new Set([5,6,7,8,9])
-
-symmetricDifference(foo, bar)
+symmetricDifference(foo, bar);
 // Set([3,4,5,6,7,8,9])
 
-symmetricDifference(foo, blah)
+symmetricDifference(foo, blah);
 // Set([0,1,2,3,4,5,6,7,8,9])
 
-symmetricDifference(bar, blah)
+symmetricDifference(bar, blah);
 // Set([0,1,2])
 ```
 
@@ -329,13 +327,12 @@ Accepts either an `Array` or `Set` and returns a `Set` containing all the elemen
 ###### Usage
 
 ```Javascript
+const { set: { union } } = require("qutyl");
 
-const { set: { union } } = require("qutyl")
+const foo = new Set([0,1,2,3,4]);
+const bar = new Set([0,1,2,5,6,7,8,9]);
 
-const foo = new Set([0,1,2,3,4])
-const bar = new Set([0,1,2,5,6,7,8,9])
-
-union(foo, bar)
+union(foo, bar);
 // Set([0,1,2,3,4,5,6,7,8,9])
 ```
 
@@ -347,13 +344,13 @@ This function zips each element of the passed _...arrays_ and returns the result
 
 ```Javascript
 
-const { zip } = require("qutyl")
+const { zip } = require("qutyl");
 
-const foo = [0,1,2,3,4]
-const bar = [0,1,2,5,6,7,8,9]
-const blah = [5,6,7,8,9]
+const foo = [0,1,2,3,4];
+const bar = [0,1,2,5,6,7,8,9];
+const blah = [5,6,7,8,9];
 
-zip(foo, bar, blah)
+zip(foo, bar, blah);
 /*
 [
   [ 0, 0, 5 ],
@@ -372,14 +369,13 @@ This function zips each element of the passed _...arrays_ and returns the result
 #### Usage
 
 ```Javascript
+const { zipAll } = require("qutyl");
 
-const { zipAll } = require("qutyl")
+const foo = [0,1,2,3,4];
+const bar = [0,1,2,5,6,7,8,9];
+const blah = [5,6,7,8,9];
 
-const foo = [0,1,2,3,4]
-const bar = [0,1,2,5,6,7,8,9]
-const blah = [5,6,7,8,9]
-
-zipAll(foo, bar, blah)
+zipAll(foo, bar, blah);
 /*
 [
   [ 0, 0, 5 ],
