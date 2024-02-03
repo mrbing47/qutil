@@ -68,9 +68,9 @@ function isSameType(a, b) {
 }
 
 /**
- * This function performs a deep SameValueZero check on all the values of an object and array
- * or on a simple primitive variable. If the any value or key for an object or any element of an array
- * is contained in the other, the function will return false.
+ * This function performs a deep **SameValueZero** check on all the values of an object and
+ * array or on a simple primitive variable. For object type, it checks for keys and values, for arrays,
+ * it first sorts the values and then compares the values, for other, **SameValueZero** is used.
  *
  * @param {*} obj1 A variable of type any.
  * @param {*} obj2 A variable of type any.

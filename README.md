@@ -475,6 +475,22 @@ union(foo, bar);
 // Set([0,1,2,3,4,5,6,7,8,9])
 ```
 
+## shuffle
+
+This function accepts an array and returns a new array with all the elements shuffled. If data type is other than _array_, it will return _undefined_.
+
+#### Usage
+
+```Javascript
+
+const foo = [1, 2, 3, 4, 5, 6, 7]
+
+shuffle(foo)
+// [ 2, 7, 4, 6, 3, 5, 1 ]
+
+
+```
+
 ## zip
 
 This function zips each element of the passed _...arrays_ and returns the resultant array with size of the smallest array in _arrays_.

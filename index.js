@@ -6,5 +6,6 @@ module.exports = {
 	addParent: require("./src/addParent"),
 	range: require("./src/range"),
 	set: require("./src/set"),
+	shuffle: require("./src/shuffle"),
 	...require("./src/zip"),
 };
